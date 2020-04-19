@@ -17,22 +17,20 @@ const emotions = new Proxy({
 })
 
 
-const scale = document.getElementById('mood');
-const form = scale.parentNode;
-const emoji = scale.nextElementSibling;
+const scale = document.querySelector('#mood');
+const form = scale.closest('form');
+const emoji = form.querySelector('output');
 
-let value;
-
-function updateVal() {
+function updateValue() {
     const newval = +scale.value;
 
-    form.style.setProperty('--val', value = newval);
-    emoji.textContent = emotions[+value]
+    form.style.setProperty('--val', newval);
+    emoji.textContent = emotions[newval]
 
     return false;
 };
 
-updateVal();
+updateValue();
 
-addEventListener('change', updateVal);
-addEventListener('input', updateVal);
+addEventListener('change', updateValue);
+addEventListener('input', updateValue);

@@ -1,3 +1,3 @@
 # HeilungLifa.github.io
 
-https://heilunglifa.github.io/Index.html
+https://heilunglifa.github.io

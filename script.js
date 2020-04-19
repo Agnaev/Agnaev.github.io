@@ -1,21 +1,11 @@
-const emotions = new Proxy({
-    '🤬': { max: 1 },
-    '😡': { max: 10 },
-    '😠': { max: 20 },
-    '😦': { max: 30 },
-    '☹️': { max: 40 },
-    '🙁': { max: 50 },
-    '😐': { max: 60 },
-    '🙂': { max: 70 },
-    '😊': { max: 80 },
-    '😄': { max: 90 },
-    '😃': { max: 100 },
-    '😍': { min: 100 }
-}, {
-    get: (target, prop) => 
-        Object.entries(target).map(x => x[0])[parseInt(prop / 10) + (prop == 0 ? 0 : 1)]
+const emotions = new Proxy([ 
+    '🤬', '😡', '😠', '😦', '☹️', '🙁', '😐', '🙂', '😊', '😄', '😃', '😍'
+], {
+    get(target, prop){  
+        const key = parseInt(prop / 10) + (prop == 0 ? 0 : 1);
+        return key in target ? target[key] : target[6];
+    }
 })
-
 
 const scale = document.querySelector('#mood');
 const form = scale.closest('form');
